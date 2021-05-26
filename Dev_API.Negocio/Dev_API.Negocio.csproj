@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dev_API.Dominio\Dev_API.Dominio.csproj" />
+    <ProjectReference Include="..\Dev_API.Entidade\Dev_API.Repositorio.csproj" />
+    <ProjectReference Include="..\Dev_API.ServicoExterno\Dev_API.ServicoExterno.csproj" />
+  </ItemGroup>
+
+</Project>
