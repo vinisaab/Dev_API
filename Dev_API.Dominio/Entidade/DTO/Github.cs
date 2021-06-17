@@ -14,9 +14,10 @@ namespace Dev_API.Dominio.Entidade.DTO
 
         public Github(GithubApi.GitHub github)
         {
-            this.LinkGitHubDoDev = github.html_url;
-            this.QuantidadeRepositoriosDoDev = github.public_repos;
-            this.DisponivelParaContratacao = github.hireable;
+
+                this.LinkGitHubDoDev = github.html_url;
+                this.QuantidadeRepositoriosDoDev = github.public_repos;
+                this.DisponivelParaContratacao = github.hireable;
 
         }
 

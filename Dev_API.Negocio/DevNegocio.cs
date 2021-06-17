@@ -1,5 +1,6 @@
 ﻿using Dev_API.Dominio.Entidade;
 using Dev_API.Dominio.Interfaces.Negocio;
+using Dev_API.Dominio.Interfaces.Repositório;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +9,13 @@ namespace Dev_API.Negocio
 {
     public class DevNegocio : IDevNegocio
     {
+
+        private readonly IDevRepositorio _devRepositorio;
+        public DevNegocio(IDevRepositorio devRepositorio)
+        {
+            _devRepositorio = devRepositorio;
+        }
+
         public bool Alterar(int CodigoDoDev, string NomeDoDev)
         {
             throw new NotImplementedException();
@@ -15,7 +23,11 @@ namespace Dev_API.Negocio
 
         public Dev Consultar(int codigoDoDev)
         {
-            throw new NotImplementedException();
+            if (codigoDoDev > 0)
+            {
+                return _devRepositorio.Consultar(codigoDoDev);
+            }
+            return null;
         }
 
         public bool Excluir(int id)
@@ -30,7 +42,7 @@ namespace Dev_API.Negocio
 
         public List<Dev> Listar()
         {
-            throw new NotImplementedException();
+            return _devRepositorio.Listar();
         }
     }
 }
