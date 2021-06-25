@@ -1,4 +1,5 @@
-﻿using Dev_API.Dominio.Interfaces.Negocio;
+﻿using Dev_API.Dominio.Entidade;
+using Dev_API.Dominio.Interfaces.Negocio;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -27,34 +28,73 @@ namespace Dev_API.Controllers
 
         // GET: api/<LinguagemController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(_linguagemNegocio.Listar());
         }
 
         // GET api/<LinguagemController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            var lang = _linguagemNegocio.Consultar(id);
+
+            if (lang?.IDDaLinguagem <= 0 && lang is not null)
+                return NotFound(new
+                {
+                    sucesso = false,
+                    mensagem = "Linguagem não cadastrada."
+                });
+
+            return Ok(lang);
         }
 
         // POST api/<LinguagemController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] string nomeDaLinguagem)
         {
+
+            bool linguagemCadastrada = _linguagemNegocio.Incluir(nomeDaLinguagem);
+            if (linguagemCadastrada)
+                return Ok(new
+                {
+                    sucesso = linguagemCadastrada,
+                    linguagem = nomeDaLinguagem
+                });
+
+            return NotFound(linguagemCadastrada);
         }
 
         // PUT api/<LinguagemController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] string nome)
         {
+
+            bool linguagemAlterada = _linguagemNegocio.Alterar(id, nome);
+            if (linguagemAlterada)
+                return Ok(linguagemAlterada);
+
+            return NotFound(new
+            {
+                sucesso = false,
+                mensagem = "Linguagem não encontrada."
+            });
         }
 
         // DELETE api/<LinguagemController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            bool langExcluida = _linguagemNegocio.Excluir(id);
+
+            if (langExcluida)
+                return Ok(langExcluida);
+
+            return NotFound(new
+            {
+                sucesso = false,
+                mensagem = "Desenvolvedor não encontrado."
+            });
         }
     }
 }
