@@ -3,7 +3,7 @@
 
 Projeto final entregue após o treinamento de 'Criação de API´s .Net Core com DDD'
 
-Cadastro de Desenvolvedores e linguagens, utilizando a api externa do Github e disponibilizando endpoints para cadastro/consulta.
+Cadastro de Desenvolvedores e linguagens, utilizando a api externa do Github e disponibilizando endpoints para cadastro/consulta com autentiucação JWT.
 
 
 
@@ -37,7 +37,7 @@ Cadastro de Desenvolvedores e linguagens, utilizando a api externa do Github e d
 	  "senhaDoUsuario": "demo",
 	  "emailDoUsuario": "string"
 	}
-	```
+	``` 
 
 ### EndPoints
 	* Cadastrar Linguagens/Framework
