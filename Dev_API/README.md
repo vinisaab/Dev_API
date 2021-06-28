@@ -30,14 +30,14 @@ Cadastro de Desenvolvedores e linguagens, utilizando a api externa do Github e d
 		
 
 ### Autenticação JWT
-	```json
-	{
-	  "codigoUsuario": 0,
-	  "loginDoUsuario": "demo",
-	  "senhaDoUsuario": "demo",
-	  "emailDoUsuario": "string"
-	}
-	``` 
+```json
+{
+  "codigoUsuario": 0,
+  "loginDoUsuario": "demo",
+  "senhaDoUsuario": "demo",
+  "emailDoUsuario": "string"
+}
+``` 
 
 ### EndPoints
 	* Cadastrar Linguagens/Framework
