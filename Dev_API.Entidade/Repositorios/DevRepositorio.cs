@@ -18,9 +18,22 @@ namespace Dev_API.Repositorio.Repositorios
         }
 
 
-        public bool Alterar(int CodigoDoDev, string NomeDoDev)
+        public bool Alterar(Dev dev)
         {
-            throw new NotImplementedException();
+            string sql = @"
+                update [desenvolvedor] 
+                    set  
+                           [nome] = @NomeDoDev
+                          ,[cpf] = @CpfDoDev
+                          ,[email] = @EmailDoDev
+                          ,[usuario_github] = @UsuarioGitHubDoDev
+                          ,[link_github] = @LinkGitHubDoDev
+                          ,[qtd_repo] = @QuantidadeRepositoriosDoDev
+                          ,[disponivel] = @DisponivelParaContratacao
+                    where id = @IDDoDev
+            ";
+
+            return Dapper.SqlMapper.Execute(_conexaoSql.AbrirConexao(), sql, dev) > 0;
         }
 
         public Dev Consultar(int codigoDoDev)
@@ -42,14 +55,26 @@ namespace Dev_API.Repositorio.Repositorios
             return Dapper.SqlMapper.QueryFirstOrDefault<Dev>(_conexaoSql.AbrirConexao(), sql, new { codigoDoDev });
         }
 
-        public bool Excluir(int id)
+        public bool Excluir(int codigoDoDev)
         {
-            throw new NotImplementedException();
+            string sql = @"
+                delete
+                from [desenvolvedor]
+                where id = @codigoDoDev
+            ";
+
+            return Dapper.SqlMapper.Execute(_conexaoSql.AbrirConexao(), sql, new { codigoDoDev }) > 0;
         }
 
         public bool Incluir(Dev dev)
         {
-            throw new NotImplementedException();
+            string sql = @"
+                insert into [desenvolvedor] 
+                    ([nome],[cpf],[email],[usuario_github],[link_github],[qtd_repo],[disponivel]) 
+                          values(@NomeDoDev, @CpfDoDev, @EmailDoDev, @UsuarioGitHubDoDev, @LinkGitHubDoDev, @QuantidadeRepositoriosDoDev, @DisponivelParaContratacao)
+            ";
+
+            return Dapper.SqlMapper.Execute(_conexaoSql.AbrirConexao(), sql, dev) > 0;
         }
 
         public List<Dev> Listar()

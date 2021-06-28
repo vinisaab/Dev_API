@@ -5,9 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Dev_API.Dominio\Dev_API.Dominio.csproj" />
     <ProjectReference Include="..\Dev_API.Entidade\Dev_API.Repositorio.csproj" />
     <ProjectReference Include="..\Dev_API.ServicoExterno\Dev_API.ServicoExterno.csproj" />
+    <ProjectReference Include="..\Utilitario\Utilitario.csproj" />
   </ItemGroup>
 
 </Project>

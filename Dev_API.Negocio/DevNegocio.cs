@@ -16,9 +16,13 @@ namespace Dev_API.Negocio
             _devRepositorio = devRepositorio;
         }
 
-        public bool Alterar(int CodigoDoDev, string NomeDoDev)
+        public bool Alterar(Dev dev)
         {
-            throw new NotImplementedException();
+            if (dev.IDDoDev > 0)
+            {
+                return _devRepositorio.Alterar(dev);
+            }
+            return false;
         }
 
         public Dev Consultar(int codigoDoDev)
@@ -30,14 +34,18 @@ namespace Dev_API.Negocio
             return null;
         }
 
-        public bool Excluir(int id)
+        public bool Excluir(int codigoDoDev)
         {
-            throw new NotImplementedException();
+            if (codigoDoDev > 0)
+            {
+                return _devRepositorio.Excluir(codigoDoDev);
+            }
+            return false;
         }
 
         public bool Incluir(Dev dev)
         {
-            throw new NotImplementedException();
+            return _devRepositorio.Incluir(dev);
         }
 
         public List<Dev> Listar()

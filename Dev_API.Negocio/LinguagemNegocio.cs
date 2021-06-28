@@ -19,7 +19,11 @@ namespace Dev_API.Negocio
 
         public bool Alterar(int idDaLnguagem, string nomeDaLinguagem)
         {
-            throw new NotImplementedException();
+            if (idDaLnguagem > 0)
+            {
+                return _linguagemRepositorio.Alterar(idDaLnguagem, nomeDaLinguagem);
+            }
+            return false;
         }
 
         public Linguagem Consultar(int idDaLnguagem)
@@ -33,12 +37,16 @@ namespace Dev_API.Negocio
 
         public bool Excluir(int idDaLnguagem)
         {
-            throw new NotImplementedException();
+            if (idDaLnguagem > 0)
+            {
+                return _linguagemRepositorio.Excluir(idDaLnguagem);
+            }
+            return false;
         }
 
-        public bool Incluir(Linguagem linguagem)
+        public bool Incluir(string nomeDaLinguagem)
         {
-            throw new NotImplementedException();
+            return _linguagemRepositorio.Incluir(nomeDaLinguagem);
         }
 
         public List<Linguagem> Listar()

@@ -9,7 +9,7 @@ namespace Dev_API.Dominio.Interfaces.Repositório
     {
         Linguagem Consultar(int idDaLnguagem);
         List<Linguagem> Listar();
-        bool Incluir(Linguagem linguagem);
+        bool Incluir(string nomeDaLinguagem);
         public bool Alterar(int idDaLnguagem, string nomeDaLinguagem);
         bool Excluir(int idDaLnguagem);
     }

@@ -10,7 +10,7 @@ namespace Dev_API.Dominio.Interfaces.Repositório
         Dev Consultar(int codigoDoDev);
         List<Dev> Listar();
         bool Incluir(Dev dev);
-        public bool Alterar(int CodigoDoDev, string NomeDoDev);
+        public bool Alterar(Dev dev);
         bool Excluir(int id);
     }
 }
