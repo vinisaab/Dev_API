@@ -82,12 +82,14 @@ namespace Dev_API
             services.AddScoped<IDevNegocio, DevNegocio>();
             services.AddScoped<IGithubNegocio, GitHubNegocio>();
             services.AddScoped<ILinguagemNegocio, LinguagemNegocio>();
+            services.AddScoped<IDevLinguagemNegocio, DevLinguagemNegocio>();
             #endregion Negocio
 
             #region Repositorio
             services.AddScoped<IConexaoSqlServer, ConexaoSqlServer>();
             services.AddScoped<IDevRepositorio, DevRepositorio>();
             services.AddScoped<ILinguagemRepositorio, LinguagemRepositorio>();
+            services.AddScoped<IDevLinguagemRepositorio, DevLinguagemRepositorio>();
             #endregion Repositorio
 
             #region ServicoExterno

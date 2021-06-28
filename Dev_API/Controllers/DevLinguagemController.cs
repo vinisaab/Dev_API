@@ -40,17 +40,17 @@ namespace Dev_API.Controllers
         /// <param name="filtro"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public IActionResult Get(int id, [FromBody] string filtro)
+        public IActionResult Get(int id, string filtro)
         {
 
-            if (filtro is null || filtro.ToUpper() != "DESENVOLVEDOR" || filtro.ToUpper() != "LINGUAGEM")
+            if (filtro is null)
                 return NotFound(new { sucesso = false, mensagem = "Preencha o filtro com 'Desenvolvedor' ou 'Linguagem'"});
 
-            if (filtro.ToUpper() == "DESENVOLVEDOR")
+            if (filtro.ToUpper().Trim() == "DESENVOLVEDOR")
             {
                 var dev = _devLinguagemNegocio.Consultar(id);
 
-                if (dev?.IDDoDev <= 0 && dev is not null)
+                if (!dev.Any())
                     return NotFound(new
                     {
                         sucesso = false,
@@ -60,11 +60,11 @@ namespace Dev_API.Controllers
                 return Ok(dev);
             }
 
-            if (filtro.ToUpper() == "LINGUAGEM")
+            if (filtro.ToUpper().Trim() == "LINGUAGEM")
             {
                 var lang = _devLinguagemNegocio.ConsultarLinguagem(id);
 
-                if (lang?.IDDaLinguagem <= 0 && lang is not null)
+                if (!lang.Any())
                     return NotFound(new
                     {
                         sucesso = false,
@@ -77,7 +77,8 @@ namespace Dev_API.Controllers
             return NotFound(new
             {
                 sucesso = false,
-                mensagem = "Não há registros que correspondem a busca."
+                mensagem = "Não há registros que correspondem a busca. ou o Filtro é inválido",
+                filtro = "Preencha o filtro com 'Desenvolvedor' ou 'Linguagem'"
             });
         }
 
