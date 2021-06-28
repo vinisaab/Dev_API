@@ -1,5 +1,6 @@
 ﻿using Dev_API.Dominio.Entidade;
 using Dev_API.Dominio.Interfaces.Negocio;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -30,6 +31,7 @@ namespace Dev_API.Controllers
         /// <returns>Desenvolvedor</returns> 
         // GET: api/<DevController>
         [HttpGet]
+        [Authorize]
         public IActionResult Get()
         {
             return Ok(_devNegocio.Listar());
@@ -43,6 +45,7 @@ namespace Dev_API.Controllers
         /// <returns>Desenvolvedor</returns>
         // GET api/<DevController>/5
         [HttpGet("{id}")]
+        [Authorize]
         public IActionResult Get(int id)
         {
             var dev = _devNegocio.Consultar(id);
@@ -63,6 +66,7 @@ namespace Dev_API.Controllers
         /// <param name="dev"></param>
         /// <returns>Resultado da Inclusão</returns>
         [HttpPost]
+        [Authorize]
         public IActionResult Post([FromBody] Dev dev)
         {
 
@@ -89,6 +93,7 @@ namespace Dev_API.Controllers
         /// <param name="dev"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult Put([FromBody] Dev dev)
         {
             
@@ -115,6 +120,7 @@ namespace Dev_API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             bool devExcluido = _devNegocio.Excluir(id);

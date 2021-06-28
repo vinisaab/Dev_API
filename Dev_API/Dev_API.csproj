@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.7" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
@@ -12,6 +14,7 @@
     <ProjectReference Include="..\Dev_API.Dominio\Dev_API.Dominio.csproj" />
     <ProjectReference Include="..\Dev_API.Entidade\Dev_API.Repositorio.csproj" />
     <ProjectReference Include="..\Dev_API.Negocio\Dev_API.Negocio.csproj" />
+    <ProjectReference Include="..\Utilitario\Utilitario.csproj" />
   </ItemGroup>
 
 </Project>

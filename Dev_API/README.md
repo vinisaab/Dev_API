@@ -1,8 +1,11 @@
+
 # Projeto API - Treinamento FMX
 
 Projeto final entregue após o treinamento de 'Criação de API´s .Net Core com DDD'
 
-Cadastro de Desenvolvedore e linguagens, utilizando a api externa do Github e disponibilizando endpoints para cadastro/consulta.
+Cadastro de Desenvolvedores e linguagens, utilizando a api externa do Github e disponibilizando endpoints para cadastro/consulta.
+
+
 
 ## Visão Geral
 ### Tabelas
@@ -21,20 +24,29 @@ Cadastro de Desenvolvedore e linguagens, utilizando a api externa do Github e di
 * Nome da Linguagem/Framework
 		
 **Relacionamento Dev/Linguagem (1 - N)**
+* ID
 * ID_DEV
 * ID_LINGUAGEM
 		
+
+### Autenticação JWT
+	```json
+	{
+	  "codigoUsuario": 0,
+	  "loginDoUsuario": "demo",
+	  "senhaDoUsuario": "demo",
+	  "emailDoUsuario": "string"
+	}
+	```
+
 ### EndPoints
 	* Cadastrar Linguagens/Framework
 	* Cadastrar Dev
+	* Cadastrar Relacionamento entre Dev e Linguagem
 	
 	* Consultar Linguagens/Framework por id
-	* Consultar Linguagens/Framework por descrição
-	
-	* Consultar Dev por id
-	* Consultar Dev por cpf
-	* Consultar Dev por usuário do github
-	* Consultar Devs por linguagem
-	
-	* Consulta Ranking por linguagem
-	
+	* Consultar Dev por Id
+	* Consultar Devs por Linguagem
+	* Consultar Linguagens por Dev
+	* Consulta GitHub pelo usuário
+

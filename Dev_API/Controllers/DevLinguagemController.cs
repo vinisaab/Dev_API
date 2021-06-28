@@ -1,5 +1,6 @@
 ﻿using Dev_API.Dominio.Entidade;
 using Dev_API.Dominio.Interfaces.Negocio;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +12,7 @@ namespace Dev_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    
     public class DevLinguagemController : ControllerBase
     {
         private readonly IDevLinguagemNegocio _devLinguagemNegocio;
@@ -28,6 +30,7 @@ namespace Dev_API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [Authorize]
         public IActionResult Get()
         {
             return Ok(_devLinguagemNegocio.Listar());
@@ -40,6 +43,7 @@ namespace Dev_API.Controllers
         /// <param name="filtro"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
+        [Authorize]
         public IActionResult Get(int id, string filtro)
         {
 
@@ -85,6 +89,7 @@ namespace Dev_API.Controllers
         
         // POST api/<LinguagemController>
         [HttpPost]
+        [Authorize]
         public IActionResult Post([FromBody] DevLinguagem devlang)
         {
 
@@ -102,6 +107,7 @@ namespace Dev_API.Controllers
         
         // DELETE api/<LinguagemController>/5
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             bool devLangExcluida = _devLinguagemNegocio.Excluir(id);

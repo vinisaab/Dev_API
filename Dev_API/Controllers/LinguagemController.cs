@@ -1,5 +1,6 @@
 ﻿using Dev_API.Dominio.Entidade;
 using Dev_API.Dominio.Interfaces.Negocio;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace Dev_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class LinguagemController : ControllerBase
     {
 
